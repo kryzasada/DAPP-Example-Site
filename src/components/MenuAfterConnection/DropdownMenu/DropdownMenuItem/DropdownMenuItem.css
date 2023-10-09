@@ -1,0 +1,19 @@
+.dropdownMenuItem {
+    @apply w-full flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white disabled:bg-inherit disabled:text-gray-500
+}
+
+.dropdownMenuItem:hover svg {
+    @apply text-gray-300
+}
+
+.dropdownMenuItem:disabled svg {
+    @apply text-gray-500
+}
+
+.dropdownMenuItem__svg {
+    @apply w-6 h-6 transition duration-75 text-gray-400
+}
+
+.dropdownMenuItem__name {
+    @apply ml-3
+}

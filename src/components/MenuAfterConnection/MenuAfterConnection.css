@@ -1,0 +1,15 @@
+.menuAfterConnection {
+    @apply ml-40 relative inline-block
+}
+
+.menuAfterConnection__button {
+    @apply flex items-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
+}
+
+.menuAfterConnection__arrow {
+    @apply w-5 h-5 mx-1
+}
+
+.dropdownMenu__current-network {
+    @apply w-5 h-5 mr-2 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white
+}

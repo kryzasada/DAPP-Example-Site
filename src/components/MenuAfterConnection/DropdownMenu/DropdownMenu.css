@@ -1,0 +1,24 @@
+.dropdownMenu {
+    @apply absolute right-0 w-56 py-2 mt-2 rounded-md shadow-xl bg-gray-800
+}
+
+.dropdownMenu__item {
+    @apply w-full flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white disabled:bg-inherit disabled:text-gray-500
+}
+
+.dropdownMenu__item:hover svg {
+    @apply text-gray-300
+}
+
+.dropdownMenu__svg {
+    @apply w-6 h-6 transition duration-75 text-gray-400
+}
+
+.dropdownMenu__hr {
+    @apply border-gray-200 dark:border-gray-700
+}
+
+
+.dropdownMenu__disconnect {
+    @apply ml-3
+}
