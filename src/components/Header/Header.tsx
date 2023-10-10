@@ -1,12 +1,13 @@
 import { HeaderProps } from "./Header.types"
+import './Header.css'
 
 const Header = (props: HeaderProps) => {
-  const { children, backgroundColor = "#888" } = props
-  const className = `bg-[${backgroundColor}] h-20 flex justify-end px-5 items-center`
 
   return (
-    <header className={className}>
-      {children}
+    <header
+      className="header"
+    >
+      {props.children}
     </header>
   )
 }

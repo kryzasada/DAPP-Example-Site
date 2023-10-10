@@ -3,7 +3,7 @@
 }
 
 .menuAfterConnection__button {
-    @apply flex items-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
+    @apply w-48 flex items-center justify-between p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
 }
 
 .menuAfterConnection__arrow {

@@ -1,5 +1,5 @@
 .btnMetamask {
-    @apply w-[185px] h-[40px] relative inline-flex items-center justify-center text-sm sm:text-base rounded-lg font-medium border-2 border-transparent transition-colors outline-transparent focus:outline-transparent disabled:opacity-50 disabled:pointer-events-none disabled:opacity-40 disabled:hover:opacity-40 disabled:cursor-not-allowed disabled:shadow-none text-white bg-[#3b3be6] hover:bg-[#3333D1] px-4 py-1 sm:py-1.5 sm:px-5
+    @apply w-48 relative inline-flex items-center justify-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
 }
 
 .btnMetamask__loading {
