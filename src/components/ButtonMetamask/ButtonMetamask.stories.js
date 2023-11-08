@@ -1,8 +1,8 @@
 import ButtonMetamask from "./ButtonMetamask"
 
 export default {
-  title: "Components/Controls/ButtonMetamask",
+  title: "Components/Button/ButtonMetamask",
   component: ButtonMetamask
 }
 
-export const Main = () => <ButtonMetamask />
+export const Default = () => <ButtonMetamask />

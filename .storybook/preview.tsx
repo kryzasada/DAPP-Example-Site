@@ -13,6 +13,7 @@ const preview = {
         date: /Date$/,
       },
     },
+    layout: 'centered',
   },
 };
 

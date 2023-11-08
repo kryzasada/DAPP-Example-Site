@@ -1,12 +1,12 @@
-.menuAfterConnection {
+.menu-after-connection {
     @apply ml-40 relative inline-block
 }
 
-.menuAfterConnection__button {
-    @apply w-48 flex items-center justify-between p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
+.menu-after-connection__button {
+    @apply w-48 flex items-center justify-between p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none border-gray-300
 }
 
-.menuAfterConnection__arrow {
+.menu-after-connection__arrow {
     @apply w-5 h-5 mx-1
 }
 

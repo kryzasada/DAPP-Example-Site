@@ -33,9 +33,9 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
     const handleDisconnect = async () => dispatch(reset())
 
     return (
-        <div className="menuAfterConnection">
+        <div className="menu-after-connection">
             <button
-                className="menuAfterConnection__button"
+                className="menu-after-connection__button"
                 onClick={() => setOpenMenu(!openMenu)}
             >
                 <CurrentNetworkIcon
@@ -45,7 +45,7 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
                     {croppedWalletAddress}
                 </span>
                 <svg
-                    className={`menuAfterConnection__arrow ${openMenu && "rotate-180"}`}
+                    className={`menu-after-connection__arrow ${openMenu && "rotate-180"}`}
                     viewBox="0 0 24 24"
                     fill="none">
                     <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor" />

@@ -1,15 +1,17 @@
 import Header from "./Header"
 
 export default {
-  title: "Components/Controls/Header",
-  component: Header
+  title: "Components/Header/Header",
+  component: Header,
+  parameters: {
+    layout: "padded"
+  },
 }
 
 const Template = (args) => <Header {...args} />
 
-export const Main = Template.bind({})
+export const Default = Template.bind({})
 
-Main.args = {
-  backgroundColor: "#888",
+Default.args = {
   children: <></>,
 }

@@ -5,18 +5,18 @@ const DropdownMenuItem = (props: DropdownMenuItemProps) => {
     return (
         <button
             onClick={props.onClick}
-            className="dropdownMenuItem"
+            className="dropdown-menu-item"
             value={props.chainId}
             disabled={props.disabled}
         >
             <svg
-                className="dropdownMenuItem__svg"
+                className="dropdown-menu-item__svg"
                 fill="currentColor"
                 viewBox={props.viewBox}
             >
                 <path d={props.d} />
             </svg>
-            <span className="dropdownMenuItem__name">
+            <span className="dropdown-menu-item__name">
                 {props.name}
             </span>
         </button>

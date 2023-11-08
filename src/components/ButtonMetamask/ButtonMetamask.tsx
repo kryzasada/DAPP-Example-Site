@@ -27,10 +27,10 @@ const ButtonMetamask = () => {
     }
 
     return (
-        <button className="btnMetamask" onClick={handleConnect}>
+        <button className="button-metamask" onClick={handleConnect}>
             {
                 loading
-                    ? <div className="btnMetamask__loading" />
+                    ? <div className="button-metamask__loading" />
                     : message
             }
         </button>

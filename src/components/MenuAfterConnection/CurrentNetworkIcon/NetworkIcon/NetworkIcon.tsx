@@ -5,7 +5,7 @@ export const NetworkIcon = (props: NetworkIconProps) => {
     return (
         <svg
             viewBox={props.viewBox}
-            className="networkIcon"
+            className="network-icon"
             fill={props.fill}
             stroke="currentColor"
             strokeWidth={props.strokeWidth}

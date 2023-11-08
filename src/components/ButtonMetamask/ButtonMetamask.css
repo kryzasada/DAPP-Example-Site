@@ -1,7 +1,7 @@
-.btnMetamask {
-    @apply w-48 relative inline-flex items-center justify-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none
+.button-metamask {
+    @apply w-48 relative inline-flex items-center justify-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none border-gray-300
 }
 
-.btnMetamask__loading {
+.button-metamask__loading {
     @apply text-center w-6 h-6 border-4 border-blue-200 rounded-full animate-spin border-t-transparent
 }

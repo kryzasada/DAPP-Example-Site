@@ -6,7 +6,7 @@ const DropdownMenu = (props: DropdownMenuProps) => {
     const { activeNetworkId, networks, handleChangeNetwork, handleDisconnect } = props
 
     return (
-        <div className="dropdownMenu">
+        <div className="dropdown-menu">
             {
                 networks?.map((element) => (
                     <DropdownMenuItem
@@ -20,17 +20,17 @@ const DropdownMenu = (props: DropdownMenuProps) => {
                     />
                 ))
             }
-            <hr className="dropdownMenu__hr" />
+            <hr className="dropdown-menu__hr" />
             <button
                 onClick={handleDisconnect}
-                className="dropdownMenu__item"
+                className="dropdown-menu__item"
             >
                 <svg
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="dropdownMenu__svg"
+                    className="dropdown-menu__svg"
                 >
                     <path
                         strokeLinecap="round"
@@ -39,7 +39,7 @@ const DropdownMenu = (props: DropdownMenuProps) => {
                     />
                 </svg>
 
-                <span className="dropdownMenu__disconnect">Disconnect</span>
+                <span className="dropdown-menu__disconnect">Disconnect</span>
             </button>
         </div>
     )
