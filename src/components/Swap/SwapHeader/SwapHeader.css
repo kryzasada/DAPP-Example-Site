@@ -1,0 +1,16 @@
+
+.swap-header {
+    @apply text-left pt-2 pr-5 pb-2 pl-5 min-w-[220px]
+}
+
+.swap-header__text {
+    @apply text-black text-xl
+}
+
+.swap-header__gear {
+    @apply float-right
+}
+
+.swap-header__icon {
+    @apply w-6 h-6 stroke-[1.5px]
+}

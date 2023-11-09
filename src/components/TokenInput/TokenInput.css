@@ -1,0 +1,43 @@
+.token-input {
+    @apply flex bg-blue-50 m-3 p-3 rounded-2xl justify-between
+}
+
+::placeholder {
+    opacity: 0.25;
+}
+
+.token-input__left_panel {
+    @apply text-left
+}
+
+.token-input__spinner {
+    @apply h-14 leading-10
+}
+
+.token-input__input {
+    @apply inline w-full text-2xl border-none bg-blue-50
+}
+
+.token-input__input:disabled {
+    @apply text-gray-600
+}
+
+.token-input__right_panel {
+    @apply text-right
+}
+
+.token-input__token-name {
+    @apply block text-2xl text-black
+}
+
+.token-input__balance {
+    @apply block
+}
+
+.token-input__balance--input {
+    @apply cursor-pointer
+}
+
+.token-input__balance span {
+    @apply inline w-full text-base text-black
+}

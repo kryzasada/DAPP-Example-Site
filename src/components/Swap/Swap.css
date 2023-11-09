@@ -1,0 +1,11 @@
+.swap {
+    @apply w-96 h-min m-0 top-1/2 rounded-3xl bg-slate-300 p-2
+}
+
+.swap__ratio {
+    @apply text-left ml-3 h-7
+}
+
+.swap__button {
+    @apply m-1
+}

@@ -1,0 +1,11 @@
+.button {
+    @apply m-1 p-2 text-2xl text-white rounded-2xl cursor-pointer pl-6 pr-6
+}
+
+.button--default {
+    @apply bg-blue-600
+}
+
+.button--swap {
+    @apply bg-pink-600 w-full h-full
+}
