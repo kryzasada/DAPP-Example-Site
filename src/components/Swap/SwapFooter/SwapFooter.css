@@ -1,0 +1,7 @@
+.swap-footer__ratio {
+    @apply text-left ml-3 h-7
+}
+
+.swap-footer__button {
+    @apply m-1
+}
