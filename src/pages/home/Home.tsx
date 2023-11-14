@@ -1,6 +1,11 @@
+import Swap from "../../components/Swap/Swap"
+
 const Home = () => {
     return (
-        <div>123</div>
+        <div>
+            <Swap />
+
+        </div>
     )
 }
 

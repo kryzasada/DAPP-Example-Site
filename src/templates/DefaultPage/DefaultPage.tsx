@@ -4,6 +4,7 @@ import MenuAfterConnection from "../../components/MenuAfterConnection/MenuAfterC
 import { useAppSelector } from "../../hooks/store"
 import networks from '../../json/networks.json'
 import { DefaultPageProps } from "./DefaultPage.types"
+import "./DefaultPage.css"
 
 const DefaultPage = (props: DefaultPageProps) => {
     const wallet = useAppSelector((state) => state.address)

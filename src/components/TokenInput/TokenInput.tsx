@@ -1,18 +1,33 @@
 import { TokenInputProps } from "./TokenInput.types"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./TokenInput.css"
 
 const TokenInput = (props: TokenInputProps) => {
-    const [value, setValue] = useState(() => props.value?.toString())
+    const [value, setValue] = useState(props.value?.toString())
+    const [amount, setAmount] = useState(0)
+    const [loading, setLoading] = useState(false)
+    const timer = useRef<any>(null)
 
-    const getPrice = (value: any) => {
-        if (props.getSwapPrice)
-            props.getSwapPrice(value)
-    }
+    useEffect(() => {
+        setValue(props.value?.toString())
+        setLoading(false)
+    }, [props.value])
+
+    useEffect(() => {
+        clearTimeout(timer.current)
+        if (props.value !== value)
+            timer.current = setTimeout(() => {
+                if (props.onBlur && amount !== 0 && amount !== undefined) {
+                    setLoading(true)
+                    return props.onBlur(amount)
+                }
+            }, 500)
+        return () => clearTimeout(timer.current)
+    }, [amount])
 
     const onClickBalance = () => {
-        if (props.getSwapPrice)
-            props.getSwapPrice(props.balance.toString())
+        if (props.onBlur && Number(props.balance) > 0)
+            props.onBlur(props.balance)
 
         setValue(props.balance.toString())
     }
@@ -20,11 +35,13 @@ const TokenInput = (props: TokenInputProps) => {
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         let input = e.target.value
         let numberInput = Number(input)
-
-        if (input == "")
-            setValue("")
-        else if (!(isNaN(numberInput) || input.includes("-") || input.includes("e")))
-            setValue(input)
+        if (!loading)
+            if (input == "")
+                setValue("")
+            else if (!(isNaN(numberInput) || input.includes("-") || input.includes("e"))) {
+                setValue(input)
+                setAmount(numberInput)
+            }
     }
 
     return (
@@ -40,7 +57,7 @@ const TokenInput = (props: TokenInputProps) => {
                         placeholder="0.0"
                         value={value}
                         disabled={props.field == "input" ? false : true}
-                        onBlur={e => (props.field === 'input' ? getPrice(e.target.value) : null)}
+                        // onBlur={e => (props.field === 'input' ? getPrice(e.target.value) : null)}
                         onChange={onChangeValue}
                     />
                 )}
@@ -54,7 +71,10 @@ const TokenInput = (props: TokenInputProps) => {
                     onClick={props.field == "input" ? onClickBalance : () => { }}
                 >
                     <span>
-                        {props.balance?.toFixed(3)}
+                        {props.balanceLoading
+                            ? "loading"
+                            : props.balance?.toFixed(3)
+                        }
                     </span>
                 </div>
             </div>

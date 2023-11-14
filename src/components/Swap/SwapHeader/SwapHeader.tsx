@@ -3,21 +3,6 @@ import SwapSettings from "./SwapSettings/SwapSettings"
 import { SwapHeaderProps } from "./SwapHeader.types"
 import "./SwapHeader.css"
 
-const SwapSpread = [
-    {
-        "value": 0.5
-    },
-    {
-        "value": 1
-    },
-    {
-        "value": 2
-    },
-    {
-        "value": 5
-    }
-]
-
 const SwapHeader = (props: SwapHeaderProps) => {
     const [openGear, setOpenGear] = useState(false)
 
@@ -64,3 +49,18 @@ const SwapHeader = (props: SwapHeaderProps) => {
 }
 
 export default SwapHeader
+
+const SwapSpread = [
+    {
+        "value": 1
+    },
+    {
+        "value": 2
+    },
+    {
+        "value": 5
+    },
+    {
+        "value": 10
+    }
+]

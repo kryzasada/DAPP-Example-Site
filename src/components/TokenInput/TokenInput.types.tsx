@@ -4,5 +4,6 @@ export type TokenInputProps = {
     balance: number;
     value?: number;
     loading?: boolean;
-    getSwapPrice?: (value: string) => void;
+    balanceLoading?: boolean;
+    onBlur?: (amount: number) => void
 };

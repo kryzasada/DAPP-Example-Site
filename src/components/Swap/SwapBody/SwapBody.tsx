@@ -3,15 +3,17 @@ import { SwapBodyProps } from "./SwapBody.types"
 import "./SwapBody.css"
 
 const SwapBody = (props: SwapBodyProps) => {
-    const { mainToken, swapToken, changeTokens } = props
+    const handleClickArrow = () => props.disabled && props.changeTokens()
 
     return (
         <div className="swap-body">
             <CurrencyInput
-                field="input"
-                tokenName={mainToken}
-                getSwapPrice={() => { }}
-                balance={0}
+                field={props.disabled ? "input" : "output"}
+                tokenName={props.mainTokenName}
+                balance={props.mainTokenBalance}
+                value={props.mainTokenAmount}
+                balanceLoading={props.balanceLoading}
+                onBlur={props.onBlur}
             />
 
             <div className="swap-body__arrow">
@@ -21,7 +23,7 @@ const SwapBody = (props: SwapBodyProps) => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     className="swap-body__icon"
-                    onClick={changeTokens}
+                    onClick={handleClickArrow}
                 >
                     <path
                         strokeLinecap="round"
@@ -33,10 +35,11 @@ const SwapBody = (props: SwapBodyProps) => {
 
             <CurrencyInput
                 field="output"
-                tokenName={swapToken}
-                // value={0}
-                balance={0}
-                loading={false}
+                tokenName={props.swapTokenName}
+                value={props.swapTokenAmount}
+                balance={props.swapTokenBalance}
+                balanceLoading={props.balanceLoading}
+                loading={props.swapTokenLoading}
             />
         </div>
     )

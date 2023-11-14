@@ -11,7 +11,7 @@ const SwapFooter = (props: SwapFooterProps) => {
 
     return (
         <div className="swap-footer">
-            {ratio &&
+            {!!ratio &&
                 <div className="swap-footer__ratio">
                     {`1 ${mainToken} = ${ratio} ${swapToken}`}
                 </div>
