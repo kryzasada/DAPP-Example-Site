@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { ethers } from "ethers"
+import { toast } from "react-toastify"
 import { AlphaRouter } from "@uniswap/smart-order-router"
 import networks from "../../json/networks.json"
 import ERC20ABI from "../../json/abi.json"
@@ -103,10 +104,19 @@ const Swap = () => {
                 transactionData.gasPrice)
             const contract = new ethers.Contract(mainToken!.address, ERC20ABI, web3Provider)
 
-            runSwap(transaction, address, mainTokenAmount, contract)
+            const swap = runSwap(transaction, address, mainTokenAmount, contract)
                 .then(() => {
                     setBalance(mainToken!.address, swapToken!.address)
                 })
+
+            toast.promise(
+                swap,
+                {
+                    pending: 'Transaction is pending',
+                    success: 'Transaction confirmed',
+                    error: 'Denied transaction signature'
+                }
+            )
         }
     }
 

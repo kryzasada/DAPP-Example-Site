@@ -3,6 +3,7 @@ import { AlphaRouter, SwapOptionsSwapRouter02, SwapType } from "@uniswap/smart-o
 import JSBI from "jsbi"
 import { ethers, BigNumber, ContractInterface } from "ethers"
 import { Network, NetworkToken, Price, Transaction } from "./Swap.types"
+import { toast } from "react-toastify"
 
 export const createToken = (
     chainId: number,
@@ -39,7 +40,10 @@ export const getPrice = async (
         swapToken,
         TradeType.EXACT_INPUT,
         swapConfig
-    )
+    ).catch((error) => {
+        toast.error("Error getting token price")
+        throw new Error(error.name)
+    })
 
     const quoteAmountOut = route!.quote.toFixed(6)
     const ratio = (Number(quoteAmountOut) / inputAmount).toFixed(3)
