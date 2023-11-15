@@ -1,5 +1,5 @@
 .button {
-    @apply m-1 p-2 text-2xl text-white rounded-2xl cursor-pointer pl-6 pr-6
+    @apply m-1 p-2 text-2xl text-white rounded-2xl cursor-pointer pl-6 pr-6 disabled:grayscale-[40%] disabled:cursor-default
 }
 
 .button--default {
@@ -7,5 +7,5 @@
 }
 
 .button--swap {
-    @apply bg-pink-600 w-full h-full
+    @apply bg-pink-600 w-full h-full min-w-[230px]
 }

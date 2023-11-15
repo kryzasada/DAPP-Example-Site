@@ -20,7 +20,7 @@ const ButtonMetamask = () => {
             }
             dispatch(set(data))
         } catch (error) {
-            alert("Error")
+            console.error(error)
         } finally {
             setLoading(false)
         }

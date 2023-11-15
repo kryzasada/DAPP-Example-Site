@@ -20,6 +20,7 @@ const Swap = () => {
     const [mainTokenBalance, setMainTokenBalance] = useState(0)
     const [swapTokenBalance, setSwapTokenBalance] = useState(0)
     const [balanceLoading, setBalanceLoading] = useState(false)
+    const [transactionPending, setTransactionPending] = useState(false)
     const [ratio, setRatio] = useState<number>(0)
     const [currentSpread, setCurrentSpread] = useState(1)
     const [loading, setLoading] = useState(false)
@@ -67,6 +68,7 @@ const Swap = () => {
 
     const getSwapPrice = (amount: number) => {
         setLoading(true)
+        setTransactionPending(true)
 
         const alphaRouter = new AlphaRouter({
             chainId: parseInt(chainId),
@@ -93,6 +95,7 @@ const Swap = () => {
             setRatio(Number(price.ratio))
         }).finally(() => {
             setLoading(false)
+            setTransactionPending(false)
         })
     }
 
@@ -104,9 +107,13 @@ const Swap = () => {
                 transactionData.gasPrice)
             const contract = new ethers.Contract(mainToken!.address, ERC20ABI, web3Provider)
 
+            setTransactionPending(true)
+
             const swap = runSwap(transaction, address, mainTokenAmount, contract)
                 .then(() => {
                     setBalance(mainToken!.address, swapToken!.address)
+                }).finally(() => {
+                    setTransactionPending(false)
                 })
 
             toast.promise(
@@ -145,6 +152,7 @@ const Swap = () => {
                 mainToken={mainToken?.symbol ?? "WETH"}
                 swapToken={swapToken?.symbol ?? "ETH"}
                 isConnection={!!address}
+                transactionPending={transactionPending}
                 isNetwork={!!getNetworkByChainId(networks, chainId)}
                 ratio={ratio}
                 handleClick={handleSwap}

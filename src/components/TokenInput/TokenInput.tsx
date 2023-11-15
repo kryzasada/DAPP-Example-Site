@@ -30,6 +30,7 @@ const TokenInput = (props: TokenInputProps) => {
             props.onBlur(props.balance)
 
         setValue(props.balance.toString())
+        setLoading(true)
     }
 
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {

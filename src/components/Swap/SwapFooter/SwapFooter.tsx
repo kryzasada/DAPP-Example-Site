@@ -3,10 +3,10 @@ import { SwapFooterProps } from "./SwapFooter.types"
 import { getButtonText } from "./SwapFooter.functions"
 import "./SwapFooter.css"
 
-
 const SwapFooter = (props: SwapFooterProps) => {
-    const { mainToken, swapToken, ratio, isNetwork, isConnection, handleClick } = props
-    const disabled = isNetwork && isConnection
+    const { mainToken, swapToken, ratio, isNetwork, isConnection, transactionPending, handleClick } = props
+    const disabled = !isNetwork || !isConnection || transactionPending
+
     const buttonText = getButtonText(isConnection, isNetwork)
 
     return (
@@ -21,7 +21,8 @@ const SwapFooter = (props: SwapFooterProps) => {
                 <Button
                     type={"swap"}
                     text={buttonText}
-                    disabled={!disabled}
+                    disabled={disabled}
+                    pending={transactionPending}
                     onClick={handleClick} />
             </div>
         </div>

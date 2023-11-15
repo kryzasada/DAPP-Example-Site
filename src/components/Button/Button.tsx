@@ -2,15 +2,18 @@ import { ButtonProps } from "./Button.types"
 import "./Button.css"
 
 const Button = (props: ButtonProps) => {
-    const { type, text, disabled = false, onClick } = props
+    const { type, text, disabled = false, pending = false, onClick } = props
 
     return (
         <button
             onClick={onClick}
             className={`button button--${type}`}
-            disabled={disabled}
+            disabled={disabled || pending}
         >
-            {text}
+            {pending
+                ? "Loading"
+                : text
+            }
         </button>
     )
 }

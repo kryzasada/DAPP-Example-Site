@@ -12,6 +12,7 @@ export type Network = {
     chainId: string
     viewBox: string
     d: string
+    disable: boolean
     tokens: Array<NetworkToken>
 }
 

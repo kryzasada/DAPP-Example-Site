@@ -18,10 +18,12 @@ export const Swap = Template.bind({})
 
 Default.args = {
   type: "default",
-  text: "Click me"
+  text: "Click me",
+  disabled: false
 }
 
 Swap.args = {
   type: "swap",
-  text: "Swap me"
+  text: "Swap me",
+  disabled: false
 }

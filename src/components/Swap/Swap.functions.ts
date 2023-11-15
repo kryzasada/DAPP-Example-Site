@@ -89,6 +89,7 @@ export const runSwap = async (
         wallet,
         V3_SWAP_ROUTER_ADDRESS
     )
+
     let allowanceFormat = Number(ethers.utils.formatEther(allowance))
     if (allowanceFormat <= amount) {
         const approvalAmount = ethers.utils.parseUnits(amount.toString(), 18)
@@ -96,6 +97,7 @@ export const runSwap = async (
             V3_SWAP_ROUTER_ADDRESS,
             approvalAmount
         )
+
         let recipient = await contractApprove.wait()
         if (recipient.status == 1) {
             const txn_receipt = await signer.sendTransaction(transaction)
@@ -113,7 +115,10 @@ export const getNetworkByChainId = (
     chainId: string
 ): Network => {
     let network = networks.filter(
-        network => network.chainId === chainId.toString()
+        network => (network.chainId === chainId.toString()
+            && network.tokens.length > 0
+            && !network.disable
+        )
     )[0]
 
     if (network !== undefined && network.tokens == undefined)
