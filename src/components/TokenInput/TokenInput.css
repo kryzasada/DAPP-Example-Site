@@ -1,9 +1,5 @@
 .token-input {
-    @apply flex bg-blue-50 m-3 p-3 rounded-2xl justify-between
-}
-
-::placeholder {
-    opacity: 0.25;
+    @apply flex px-6 py-3 rounded-xl justify-between bg-slate-50 shadow placeholder:opacity-25
 }
 
 .token-input__left_panel {
@@ -15,11 +11,7 @@
 }
 
 .token-input__input {
-    @apply inline w-full text-2xl border-none bg-blue-50
-}
-
-.token-input__input:disabled {
-    @apply text-gray-600
+    @apply inline w-full text-2xl border-none bg-slate-50 disabled:text-gray-600
 }
 
 .token-input__right_panel {

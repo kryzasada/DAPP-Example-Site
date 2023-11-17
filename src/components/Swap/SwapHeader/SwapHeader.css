@@ -8,7 +8,7 @@
 }
 
 .swap-header__gear {
-    @apply float-right
+    @apply float-right cursor-pointer
 }
 
 .swap-header__icon {

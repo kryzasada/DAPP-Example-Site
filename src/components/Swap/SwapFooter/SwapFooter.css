@@ -1,3 +1,7 @@
+.swap-footer {
+    @apply mt-6
+}
+
 .swap-footer__ratio {
     @apply text-left ml-3 h-7
 }

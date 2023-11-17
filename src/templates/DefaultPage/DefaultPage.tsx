@@ -10,7 +10,7 @@ const DefaultPage = (props: DefaultPageProps) => {
     const wallet = useAppSelector((state) => state.address)
 
     return (
-        <>
+        <div className="defaultPage">
             <Header>
                 {
                     !!wallet
@@ -21,7 +21,7 @@ const DefaultPage = (props: DefaultPageProps) => {
             <main>
                 {props.children}
             </main>
-        </>
+        </div>
     )
 }
 

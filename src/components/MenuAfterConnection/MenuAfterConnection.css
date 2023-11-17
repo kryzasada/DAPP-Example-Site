@@ -1,9 +1,9 @@
 .menu-after-connection {
-    @apply ml-40 relative inline-block
+    @apply relative inline-block
 }
 
 .menu-after-connection__button {
-    @apply w-48 flex items-center justify-between p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none border-gray-300
+    @apply w-48 flex font-medium items-center justify-between p-3 text-gray-600 bg-slate-50 border border-transparent rounded-md dark:text-white dark:bg-slate-50 focus:outline-none border-gray-200 shadow-sm
 }
 
 .menu-after-connection__arrow {

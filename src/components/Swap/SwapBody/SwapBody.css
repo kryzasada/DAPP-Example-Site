@@ -1,9 +1,9 @@
 .swap-body__arrow {
-    @apply flex h-8 justify-center select-none
+    @apply flex h-8 justify-center select-none my-2
 }
 
 .swap-body__icon {
-    @apply h-8 w-8 bg-blue-50 rounded-2xl p-1 hover:rotate-180 hover:duration-500 cursor-pointer stroke-[1.5px]
+    @apply h-8 w-8 bg-slate-50 rounded-2xl p-1 hover:rotate-180 hover:duration-500 cursor-pointer stroke-[1.5px] border border-gray-200 shadow-sm
 }
 
 .swap-body__icon:not(:hover) {

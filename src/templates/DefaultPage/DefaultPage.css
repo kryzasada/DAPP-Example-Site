@@ -1,3 +1,7 @@
+html {
+    @apply bg-[#edebffb3] h-full
+}
+
 main {
-    @apply flex justify-center items-center h-[80vh]
+    @apply flex justify-center items-center h-[80vh] min-h-[400px]
 }

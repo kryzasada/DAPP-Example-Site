@@ -7,5 +7,5 @@
 }
 
 .radio-input__label--checked {
-    @apply bg-blue-500 font-bold text-white
+    @apply bg-indigo-600 font-bold text-white
 }

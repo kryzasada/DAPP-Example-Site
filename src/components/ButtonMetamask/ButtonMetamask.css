@@ -1,5 +1,5 @@
 .button-metamask {
-    @apply w-48 relative inline-flex items-center justify-center p-3 text-gray-600 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-800 focus:outline-none border-gray-300
+    @apply w-48 relative font-medium inline-flex items-center justify-center p-3 text-gray-600 bg-white border border-transparent rounded-md focus:outline-none border-gray-300
 }
 
 .button-metamask__loading {
