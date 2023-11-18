@@ -11,24 +11,19 @@ const SwapSettings = (props: SwapSettingsProps) => {
     return (
         <div
             className="swap-settings"
-            x-cloak
-            x-show="reportsOpen"
-            x-collapse
         >
             <div className="swap-settings__title">
                 Spread
             </div>
 
             <div className="swap-settings__list">
-                {
-                    props.swapSpreadList.map((data) =>
-                        <RadioInput
-                            value={data.value}
-                            checked={props.currentSpread == data.value}
-                            onClick={onChange}
-                        />
-                    )
-                }
+                {props.swapSpreadList.map((data) =>
+                    <RadioInput
+                        value={data.value}
+                        checked={props.currentSpread === data.value}
+                        onClick={onChange}
+                    />
+                )}
             </div>
         </div>
     )

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { metamaskInstalled } from './ButtonMetamask.functions'
 import { chainId, requestAccounts } from '../../functions/rpcMethods'
 import { useAppSelector, useAppDispatch } from '../../hooks/store'
 import { set } from '../../store/reducer'
@@ -12,10 +14,22 @@ const ButtonMetamask = () => {
     const dispatch = useAppDispatch()
 
     const handleConnect = async () => {
+        if (!metamaskInstalled()) {
+            toast.error("Metamask not detected")
+            return
+        }
+
+        const address = requestAccounts()
+            .catch((error) => {
+                if (error.code == 4001)
+                    toast.error("Metamask connections rejected")
+                throw new Error(error.message)
+            })
+
         try {
             setLoading(true)
             let data = {
-                address: await requestAccounts(),
+                address: await address,
                 chainId: await chainId()
             }
             dispatch(set(data))

@@ -8,7 +8,7 @@ import { useAppSelector } from "../../hooks/store"
 import SwapBody from "./SwapBody/SwapBody"
 import SwapHeader from "./SwapHeader/SwapHeader"
 import SwapFooter from "./SwapFooter/SwapFooter"
-import { changeTokens, createToken, getNetworkByChainId, getPrice, getTokenBalance, getTransaction, isDisabled, runSwap } from "./Swap.functions"
+import { changeTokens, createToken, getNetworkByChainId, getPrice, getTokenBalance, getTransactionData, isDisabled, runSwap } from "./Swap.functions"
 import { NetworkToken, Price, TransactionData } from "./Swap.types"
 import "./Swap.css"
 
@@ -84,7 +84,10 @@ const Swap = () => {
             createdMainToken,
             createdSwapToken,
             alphaRouter,
-        ).then((price: Price) => {
+        ).catch((error) => {
+            toast.error("Error getting token price")
+            throw new Error(error.name)
+        }).then((price: Price) => {
             setTransactionData({
                 data: price.data,
                 value: price.value,
@@ -101,7 +104,7 @@ const Swap = () => {
 
     const handleSwap = async () => {
         if (transactionData !== undefined && !loading) {
-            const transaction = getTransaction(address,
+            const transaction = getTransactionData(address,
                 transactionData.data,
                 transactionData.value,
                 transactionData.gasPrice)

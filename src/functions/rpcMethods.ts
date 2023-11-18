@@ -1,17 +1,6 @@
-import { toast } from "react-toastify"
-
 export async function requestAccounts() {
-    if (window.ethereum == undefined) {
-        toast.error("Metamask not detected")
-        throw new Error("Metamask not detected")
-    }
-
     const address = await window.ethereum.request({
         method: "eth_requestAccounts",
-    }).catch((error) => {
-        if (error.code == 4001)
-            toast.error("Metamask connections rejected")
-        throw new Error(error.name)
     })
 
     if (address === undefined || address === null)

@@ -10,7 +10,7 @@ const DefaultPage = (props: DefaultPageProps) => {
     const wallet = useAppSelector((state) => state.address)
 
     return (
-        <div className="defaultPage">
+        <div className="default-page">
             <Header>
                 {
                     !!wallet

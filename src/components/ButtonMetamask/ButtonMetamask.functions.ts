@@ -1,0 +1,1 @@
+export const metamaskInstalled = (): boolean => window.ethereum !== undefined

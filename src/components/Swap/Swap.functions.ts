@@ -3,7 +3,6 @@ import { AlphaRouter, SwapOptionsSwapRouter02, SwapType } from "@uniswap/smart-o
 import JSBI from "jsbi"
 import { ethers, BigNumber, ContractInterface } from "ethers"
 import { Network, NetworkToken, Price, Transaction } from "./Swap.types"
-import { toast } from "react-toastify"
 
 export const createToken = (
     chainId: number,
@@ -40,10 +39,7 @@ export const getPrice = async (
         swapToken,
         TradeType.EXACT_INPUT,
         swapConfig
-    ).catch((error) => {
-        toast.error("Error getting token price")
-        throw new Error(error.name)
-    })
+    )
 
     const quoteAmountOut = route!.quote.toFixed(6)
     const ratio = (Number(quoteAmountOut) / inputAmount).toFixed(3)
@@ -57,17 +53,15 @@ export const getPrice = async (
     }
 }
 
-export const getTransaction = (
+export const getTransactionData = (
     walletAddress: string,
     data: string,
     value: string,
     gasPrice: ethers.BigNumber
 ): Transaction => {
-    const V3_SWAP_ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
-
     return {
         data,
-        to: V3_SWAP_ROUTER_ADDRESS,
+        to: "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
         value,
         from: walletAddress,
         gasPrice,
@@ -79,35 +73,48 @@ export const runSwap = async (
     transaction: Transaction,
     wallet: string,
     amount: number,
-    contract: any
+    contract: ethers.Contract
 ): Promise<void> => {
-    const V3_SWAP_ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
+    const SWAP_ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
     const provider = new ethers.providers.Web3Provider(window.ethereum as any)
-    const signer = provider.getSigner();
+    const signer = provider.getSigner()
 
     let allowance = await contract.connect(signer).allowance(
         wallet,
-        V3_SWAP_ROUTER_ADDRESS
+        SWAP_ROUTER_ADDRESS
     )
+    let formatAllowance = Number(ethers.utils.formatEther(allowance))
 
-    let allowanceFormat = Number(ethers.utils.formatEther(allowance))
-    if (allowanceFormat <= amount) {
-        const approvalAmount = ethers.utils.parseUnits(amount.toString(), 18)
-        let contractApprove = await contract.connect(signer).approve(
-            V3_SWAP_ROUTER_ADDRESS,
-            approvalAmount
-        )
+    if (formatAllowance <= amount) {
+        let approve = await sendContractApprove(contract, signer, SWAP_ROUTER_ADDRESS, amount)
+        if (approve.status == 1)
+            await sendTransaction(signer, transaction)
+    }
+    else
+        await sendTransaction(signer, transaction)
+}
 
-        let recipient = await contractApprove.wait()
-        if (recipient.status == 1) {
-            const txn_receipt = await signer.sendTransaction(transaction)
-            await txn_receipt.wait()
-        }
-    }
-    else {
-        const txn_receipt = await signer.sendTransaction(transaction)
-        await txn_receipt.wait()
-    }
+const sendContractApprove = async (
+    contract: ethers.Contract,
+    signer: ethers.providers.JsonRpcSigner,
+    swap_router_address: string,
+    amount: number
+) => {
+    const parseAmount = ethers.utils.parseUnits(amount.toString(), 18)
+
+    let contractApprove = await contract.connect(signer).approve(
+        swap_router_address,
+        parseAmount
+    )
+    return await contractApprove.wait()
+}
+
+const sendTransaction = async (
+    signer: ethers.providers.JsonRpcSigner,
+    transaction: Transaction
+): Promise<ethers.providers.TransactionReceipt> => {
+    const txn_receipt = await signer.sendTransaction(transaction)
+    return await txn_receipt.wait()
 }
 
 export const getNetworkByChainId = (
@@ -117,11 +124,10 @@ export const getNetworkByChainId = (
     let network = networks.filter(
         network => (network.chainId === chainId.toString()
             && network.tokens.length > 0
-            && !network.disable
-        )
+            && !network.disable)
     )[0]
 
-    if (network !== undefined && network.tokens == undefined)
+    if (network !== undefined && network.tokens === undefined)
         throw new RangeError(`Insufficient tokens in ${network.name} network`)
 
     return network
@@ -152,7 +158,7 @@ export const changeTokens = (
     currentToken: string
 ) => {
     let network = getNetworkByChainId(networks, chainId)
-    return currentToken == network.tokens[0].symbol
+    return currentToken === network.tokens[0].symbol
         ? {
             "mainToken": network.tokens[1],
             "swapToken": network.tokens[0]

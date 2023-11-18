@@ -1,8 +1,8 @@
 
-import React from 'react';
-import '../src/index.css';
+import React from 'react'
+import '../src/index.css'
 import store from '../src/store/store'
-import { Provider } from "react-redux";
+import { Provider } from "react-redux"
 
 const preview = {
   parameters: {
@@ -15,9 +15,9 @@ const preview = {
     },
     layout: 'centered',
   },
-};
+}
 
-export default preview;
+export default preview
 
 export const decorators = [
   Story => (
@@ -25,4 +25,4 @@ export const decorators = [
       <Story />
     </Provider>
   )
-];
+]

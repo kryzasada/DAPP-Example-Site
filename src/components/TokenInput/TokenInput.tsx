@@ -1,5 +1,5 @@
-import { TokenInputProps } from "./TokenInput.types"
 import { useEffect, useRef, useState } from "react"
+import { TokenInputProps } from "./TokenInput.types"
 import "./TokenInput.css"
 
 const TokenInput = (props: TokenInputProps) => {
@@ -36,32 +36,32 @@ const TokenInput = (props: TokenInputProps) => {
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         let input = e.target.value
         let numberInput = Number(input)
-        if (!loading)
-            if (input == "")
-                setValue("")
-            else if (!(isNaN(numberInput) || input.includes("-") || input.includes("e"))) {
-                setValue(input)
-                setAmount(numberInput)
-            }
+        if (input === "" && !loading)
+            setValue("")
+        else if (!(isNaN(numberInput) || input.includes("-") || input.includes("e")) && !loading) {
+            setValue(input)
+            setAmount(numberInput)
+        }
     }
 
     return (
         <div className="token-input">
             <div className="token-input__left_panel">
-                {props.loading ? (
-                    <div className="token-input__spinner">
-                        "loading..."
-                    </div>
-                ) : (
-                    <input
-                        className="token-input__input"
-                        placeholder="0.0"
-                        value={value}
-                        disabled={props.field == "input" ? false : true}
-                        // onBlur={e => (props.field === 'input' ? getPrice(e.target.value) : null)}
-                        onChange={onChangeValue}
-                    />
-                )}
+                {props.loading
+                    ? (
+                        <div className="token-input__spinner">
+                            "loading..."
+                        </div>
+                    ) : (
+                        <input
+                            className="token-input__input"
+                            placeholder="0.0"
+                            value={value}
+                            disabled={props.field === "input" ? false : true}
+                            onChange={onChangeValue}
+                        />
+                    )
+                }
             </div>
             <div className="token-input__right_panel">
                 <span className="token-input__token-name">
@@ -69,7 +69,7 @@ const TokenInput = (props: TokenInputProps) => {
                 </span>
                 <div
                     className={`token-input__balance token-input__balance--${props.field}`}
-                    onClick={props.field == "input" ? onClickBalance : () => { }}
+                    onClick={props.field === "input" ? onClickBalance : () => { }}
                 >
                     <span>
                         {props.balanceLoading

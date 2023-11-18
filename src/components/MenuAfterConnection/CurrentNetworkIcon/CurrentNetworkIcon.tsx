@@ -6,18 +6,16 @@ import { NetworkIcon } from "./NetworkIcon/NetworkIcon"
 
 const CurrentNetworkIcon = (props: CurrentNetworkIconProps) => {
     const { chainId, networks } = props
-    const [currentNetwork, setCurrentNetwork] = useState<Networks | "error">("error")
+    const [currentNetwork, setCurrentNetwork] = useState<Networks>()
 
     useEffect(() => {
         let network = networkFromNetworksList(chainId, networks)
-        if (network === undefined)
-            setCurrentNetwork("error")
-        else
-            setCurrentNetwork(network)
+        if (network !== undefined)
+        setCurrentNetwork(network)
     }, [chainId, networks])
 
     return (
-        currentNetwork === "error"
+        currentNetwork === undefined
             ? <NetworkIcon
                 strokeWidth={"2"}
                 viewBox={"0 0 22 24"}

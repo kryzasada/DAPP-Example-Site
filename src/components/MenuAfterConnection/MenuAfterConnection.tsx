@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react"
+import { toast } from "react-toastify"
 import { reset, setChainId } from '../../store/reducer'
 import { useAppSelector, useAppDispatch } from '../../hooks/store'
 import cropWalletAddress from "../../functions/cropWalletAddress"
@@ -14,6 +15,7 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
     const wallet = useAppSelector((state) => state.address)
     const chainId = useAppSelector((state) => state.chainId)
     const dispatch = useAppDispatch()
+    const handleDisconnect = async () => dispatch(reset())
 
     const croppedWalletAddress = useMemo(() =>
         cropWalletAddress(wallet),
@@ -25,12 +27,12 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
             await switchEthereumChain(chainId)
             dispatch(setChainId(chainId))
             setOpenMenu(false)
-        } catch (error) {
-            console.error(error)
+        } catch (error: any) {
+            if (error.code == 4001)
+                toast.error("Chain chang rejected")
+            console.error(error.name)
         }
     }
-
-    const handleDisconnect = async () => dispatch(reset())
 
     return (
         <div className="menu-after-connection">
@@ -40,15 +42,20 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
             >
                 <CurrentNetworkIcon
                     chainId={chainId}
-                    networks={networks} />
+                    networks={networks}
+                />
                 <span>
                     {croppedWalletAddress}
                 </span>
                 <svg
                     className={`menu-after-connection__arrow ${openMenu && "rotate-180"}`}
                     viewBox="0 0 24 24"
-                    fill="none">
-                    <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor" />
+                    fill="none"
+                >
+                    <path
+                        d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z"
+                        fill="currentColor"
+                    />
                 </svg>
             </button>
             {
@@ -61,7 +68,6 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
                 />
             }
         </div>
-
     )
 }
 
