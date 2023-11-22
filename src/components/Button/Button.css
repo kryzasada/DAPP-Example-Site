@@ -1,4 +1,5 @@
 .button {
+    -webkit-tap-highlight-color: transparent;
     @apply m-1 p-2 text-2xl text-white rounded-2xl cursor-pointer pl-6 pr-6 disabled:grayscale-[90%] disabled:cursor-default
 }
 

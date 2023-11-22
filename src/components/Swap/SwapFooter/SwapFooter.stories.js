@@ -15,7 +15,7 @@ const Template = (args) => <SwapFooter {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-  mainToken: "ETH",
+  mainToken: "UNI",
   swapToken: "WETH",
   ratio: 1.01,
   isNetwork: true,

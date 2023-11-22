@@ -27,7 +27,7 @@ const Swap = () => {
     const [transactionData, setTransactionData] = useState<TransactionData>()
     const { address, chainId } = useAppSelector((state) => state)
 
-    const INFURA_URL = process.env.REACT_APP_INFURA_URL_TESTNET
+    const INFURA_URL = process.env.REACT_APP_INFURA_URL
     const web3Provider = new ethers.providers.JsonRpcProvider(INFURA_URL)
 
     useEffect(() => {
@@ -63,7 +63,8 @@ const Swap = () => {
         setSwapTokenBalance(mainTokenBalance)
         setMainTokenAmount(swapTokenAmount)
         setSwapTokenAmount(mainTokenAmount)
-        setRatio(Number((1 / ratio).toFixed(6)))
+        if (ratio !== 0)
+            setRatio(Number((1 / ratio).toFixed(6)))
     }
 
     const getSwapPrice = (amount: number) => {
@@ -138,7 +139,7 @@ const Swap = () => {
             />
 
             <SwapBody
-                mainTokenName={mainToken?.symbol ?? "ETH"}
+                mainTokenName={mainToken?.symbol ?? "UNI"}
                 swapTokenName={swapToken?.symbol ?? "WETH"}
                 mainTokenAmount={mainTokenAmount}
                 swapTokenAmount={swapTokenAmount}
@@ -153,7 +154,7 @@ const Swap = () => {
 
             <SwapFooter
                 mainToken={mainToken?.symbol ?? "WETH"}
-                swapToken={swapToken?.symbol ?? "ETH"}
+                swapToken={swapToken?.symbol ?? "UNI"}
                 isConnection={!!address}
                 transactionPending={transactionPending}
                 isNetwork={!!getNetworkByChainId(networks, chainId)}

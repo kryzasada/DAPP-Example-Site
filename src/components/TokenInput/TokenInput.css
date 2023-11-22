@@ -27,6 +27,7 @@
 }
 
 .token-input__balance--input {
+    -webkit-tap-highlight-color: transparent;
     @apply cursor-pointer
 }
 

@@ -3,7 +3,8 @@
 }
 
 .swap-body__icon {
-    @apply h-8 w-8 bg-slate-50 rounded-2xl p-1 hover:rotate-180 hover:duration-500 cursor-pointer stroke-[1.5px] border border-gray-200 shadow-sm
+    -webkit-tap-highlight-color: transparent;
+    @apply h-8 w-8 bg-slate-50 rounded-2xl p-1 cursor-pointer stroke-[1.5px] border border-gray-200 shadow-sm md:hover:rotate-180 md:hover:duration-500
 }
 
 .swap-body__icon:not(:hover) {

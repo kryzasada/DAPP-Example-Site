@@ -29,7 +29,7 @@ const MenuAfterConnection = (props: MenuAfterConnectionProps) => {
             setOpenMenu(false)
         } catch (error: any) {
             if (error.code == 4001)
-                toast.error("Chain chang rejected")
+                toast.error("Chain change rejected")
             console.error(error.name)
         }
     }

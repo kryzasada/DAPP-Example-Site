@@ -8,6 +8,7 @@
 }
 
 .swap-header__gear {
+    -webkit-tap-highlight-color: transparent;
     @apply float-right cursor-pointer
 }
 

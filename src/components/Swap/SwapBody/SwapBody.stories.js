@@ -15,6 +15,6 @@ const Template = (args) => <SwapBody {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-  mainToken: "ETH",
+  mainToken: "UNI",
   swapToken: "WETH"
 }

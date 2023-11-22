@@ -11,6 +11,6 @@ export const Default = Template.bind({})
 
 Default.args = {
   field: "input",
-  tokenName: "ETH",
+  tokenName: "UNI",
   balance: 0
 }
