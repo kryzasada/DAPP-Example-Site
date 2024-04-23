@@ -7,7 +7,7 @@ const DropdownMenuItem = (props: DropdownMenuItemProps) => {
             onClick={props.onClick}
             className="dropdown-menu-item"
             value={props.chainId}
-            disabled={props.disabled}
+            disabled={props.current || props.disabled}
         >
             <svg
                 className="dropdown-menu-item__svg"
@@ -16,7 +16,7 @@ const DropdownMenuItem = (props: DropdownMenuItemProps) => {
             >
                 <path d={props.d} />
             </svg>
-            <span className="dropdown-menu-item__name">
+            <span className={`dropdown-menu-item__name ${props.disabled && "disabled"}`}>
                 {props.name}
             </span>
         </button>

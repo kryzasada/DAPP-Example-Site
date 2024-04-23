@@ -1,10 +1,10 @@
 [
     {
+        "disable": true,
         "chainId": "0x5",
         "name": "Goerli Testnet",
         "viewBox": "0 0 320 512",
         "d": "M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z",
-        "disable": false,
         "tokens": [
             {
                 "name": "Wrapped Ether",
@@ -21,11 +21,24 @@
         ]
     },
     {
+        "disable": false,
         "chainId": "0xaa36a7",
         "name": "Sepolia Testnet",
         "viewBox": "0 0 320 512",
         "d": "M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z",
-        "disable": true,
-        "tokens": []
+        "tokens": [
+            {
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "address": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14"
+            },
+            {
+                "name": "Uniswap",
+                "symbol": "UNI",
+                "decimals": 18,
+                "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+            }
+        ]
     }
 ]

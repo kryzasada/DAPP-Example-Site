@@ -74,7 +74,7 @@ const TokenInput = (props: TokenInputProps) => {
                     <span>
                         {props.balanceLoading
                             ? "loading"
-                            : props.balance?.toFixed(3)
+                            : props.balance?.toFixed(5)
                         }
                     </span>
                 </div>

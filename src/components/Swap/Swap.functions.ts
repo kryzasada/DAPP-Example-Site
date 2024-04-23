@@ -61,7 +61,7 @@ export const getTransactionData = (
 ): Transaction => {
     return {
         data,
-        to: "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+        to: "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
         value,
         from: walletAddress,
         gasPrice,
@@ -75,7 +75,7 @@ export const runSwap = async (
     amount: number,
     contract: ethers.Contract
 ): Promise<void> => {
-    const SWAP_ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
+    const SWAP_ROUTER_ADDRESS = "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E"
     const provider = new ethers.providers.Web3Provider(window.ethereum as any)
     const signer = provider.getSigner()
 
@@ -126,7 +126,7 @@ export const getNetworkByChainId = (
             && network.tokens.length > 0
             && !network.disable)
     )[0]
-
+        
     if (network !== undefined && network.tokens === undefined)
         throw new RangeError(`Insufficient tokens in ${network.name} network`)
 

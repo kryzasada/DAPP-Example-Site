@@ -16,7 +16,8 @@ const DropdownMenu = (props: DropdownMenuProps) => {
                         d={element.d}
                         chainId={element.chainId}
                         onClick={handleChangeNetwork}
-                        disabled={activeNetworkId === element.chainId ? true : false}
+                        disabled={!!element.disable}
+                        current={activeNetworkId === element.chainId}
                     />
                 )
             }

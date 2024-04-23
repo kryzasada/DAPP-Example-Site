@@ -17,3 +17,7 @@
 .dropdown-menu-item__name {
     @apply ml-3
 }
+
+.dropdown-menu-item__name.disabled{
+    @apply line-through
+}

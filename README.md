@@ -7,7 +7,7 @@ Decentralized application for cryptocurrency swapping, combining ethers.js for b
 
 ## Important notes
 
-Please note that this demo operates on the Goerli test network. You will require Wrapped Ethereum (WETH). For swapping ETH for WETH, you can use the Uniswap platform: https://app.uniswap.org/swap?chain=goerli.
+Please note that this demo operates on the Sepolia test network. You will require Wrapped Ethereum (WETH). For swapping ETH for WETH, you can use the Uniswap platform: https://app.uniswap.org/swap?chain=sepolia.
 
 Currently, the demo allows you to convert WETH to UNI and vice versa.
 
@@ -49,5 +49,5 @@ Currently, the demo allows you to convert WETH to UNI and vice versa.
 
 ```js
 // Infura API URL key
-REACT_APP_INFURA_URL = "https://goerli.infura.io/v3/YOUR_INFURA_KEY"
+REACT_APP_INFURA_URL = "https://sepolia.infura.io/v3/YOUR_INFURA_KEY"
 ```

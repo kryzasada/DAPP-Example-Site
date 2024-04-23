@@ -3,6 +3,7 @@ export type Networks = {
     chainId: string
     viewBox: string
     d: string
+    disable?: boolean
 }
 
 export type MenuAfterConnectionProps = {
